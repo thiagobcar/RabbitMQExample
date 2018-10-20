@@ -1,4 +1,4 @@
-package br.com.deveria.rabbitmqexample;
+package br.com.deveria.rabbitmqexample.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
