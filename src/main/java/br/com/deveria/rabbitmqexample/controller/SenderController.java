@@ -17,16 +17,18 @@ public class SenderController {
 	private QueueSenderService queueSenderService;
 
 	@RequestMapping(value="/send", method=POST)
-	public ModelAndView send(@RequestParam String message) {
-		ModelAndView mv = new ModelAndView("welcome");
+	public ModelAndView send(@RequestParam String queueName,
+			@RequestParam String message,
+			@RequestParam Integer times) {
+		ModelAndView mv = new ModelAndView("redirect:/");
 		String result = null;
 		try {
-			queueSenderService.sendSimpleMessage(message);
+			queueSenderService.sendMessage(queueName, times, message);
 			result = "enviado";
 		} catch (Exception e) {
 			result = "Falha ao enviar! Erro:"+e.getMessage();
 		}
-		mv.addObject("result", result);
+		mv.addObject("senderResult", result);
 		return mv;
 	}
 }
