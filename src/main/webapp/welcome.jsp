@@ -12,10 +12,31 @@
 <h1>Test RabbitMQ Messaging</h1>
 <form action="/send" method="post">
 	<h3>Sending</h3>
+	Queue Name:
+	<br/>
+	<select id="queueNamesList" name="queueName">
+		<c:forEach items="${queueNamesList}" var="queueName">	
+			<option><c:out value="${queueName}"/></option>
+		</c:forEach>
+	</select>
+	<br/>
+	<br/>
+	# Times:
+	<br/>
+	<select id="times" name="times">
+		<c:forEach var="number" begin="1" end="10">	
+			<option><c:out value="${number}"/></option>
+		</c:forEach>
+	</select>
+	<br/>
+	<br/>
+	Message:
+	<br/>
 	<input type="text" id="message" name="message" value="" />
 	<br/>
-	<c:if test="${result != null}">	
-		<p>${result}</p>
+	<br/>
+	<c:if test="${senderResult != null}">	
+		<p>${senderResult}</p>
 	</c:if>
 	<input type="submit" value="Send" />
 	<br/>
@@ -23,7 +44,10 @@
 <hr/>
 <form action="/consume" method="post">
 	<h3>Consuming</h3>
-	<input type="text" readonly="readonly" value="${message}" />
+	Message:
+	<br/>
+	<input type="text" readonly="readonly" value="${consumedMessage}" />
+	<br/>
 	<br/>
 	<input type="submit" value="Consume" />
 	<br/>

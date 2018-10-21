@@ -17,8 +17,8 @@ public class ConsumerController {
 	
 	@RequestMapping(value="/consume", method=POST)
 	public ModelAndView consume() {
-		ModelAndView mv = new ModelAndView("welcome");
-		mv.addObject("message", queueConsumerService.consumeSimpleMessage());
+		ModelAndView mv = new ModelAndView("redirect:/");
+		mv.addObject("consumedMessage", queueConsumerService.consumeSimpleMessage());
 		return mv;
 	}
 }

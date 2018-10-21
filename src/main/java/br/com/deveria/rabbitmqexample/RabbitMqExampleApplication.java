@@ -14,6 +14,9 @@ public class RabbitMqExampleApplication {
 	@Value("${queue.simplemessage.name}")
 	private String simpleMessageQueueName;
 	
+	@Value("${queue.autoconsume.name}")
+	private String autoConsumeQueueName;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RabbitMqExampleApplication.class, args);
 	}
@@ -21,5 +24,10 @@ public class RabbitMqExampleApplication {
 	@Bean
     public Queue simpleMessageQueue() {
         return new Queue(simpleMessageQueueName, true);
+    }
+	
+	@Bean
+    public Queue autoConsumeQueue() {
+        return new Queue(autoConsumeQueueName, true);
     }
 }
