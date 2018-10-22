@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RabbitMQ Testing</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/script.js"></script>
 </head>
 <body>
 <h1>Test RabbitMQ Messaging</h1>
@@ -14,11 +16,13 @@
 	<h3>Sending</h3>
 	Queue Name:
 	<br/>
-	<select id="queueNamesList" name="queueName">
+	<br/>
+	<select id="queueNamesList" name="queueName" onchange="javascript:queueHint.showHint(this.value)">
 		<c:forEach items="${queueNamesList}" var="queueName">	
 			<option><c:out value="${queueName}"/></option>
 		</c:forEach>
 	</select>
+	<span id="queueHint"></span>
 	<br/>
 	<br/>
 	# Times:
